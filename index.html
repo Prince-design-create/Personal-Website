@@ -44,7 +44,7 @@
         header #branding h1 {
             margin: 0;
         }
-        #about, #experience, #education, #skills, #contact {
+        #about, #experience, #education, #skills, #projects, #contact {
             padding: 20px;
             margin-bottom: 20px;
             background: #fff;
@@ -60,6 +60,40 @@
             padding: 30px 0;
             margin-top: 20px;
         }
+        .project {
+            margin-bottom: 20px;
+        }
+        .project h3 {
+            margin: 0;
+        }
+        .project p {
+            margin: 5px 0;
+        }
+        .project a {
+            color: #77aaff;
+            text-decoration: none;
+        }
+        .project a:hover {
+            text-decoration: underline;
+        }
+        .add-project {
+            margin-top: 20px;
+        }
+        .add-project input, .add-project textarea, .add-project button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .add-project button {
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .add-project button:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +108,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -165,16 +200,73 @@
             </ul>
         </section>
 
+        <section id="projects">
+            <h2>Projects</h2>
+            <div id="project-list">
+                <!-- Example project -->
+                <div class="project">
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                    <a href="#" target="_blank">View Project</a>
+                </div>
+            </div>
+            <div class="add-project">
+                <h3>Add a New Project</h3>
+                <input type="text" id="project-title" placeholder="Project Title">
+                <textarea id="project-description" placeholder="Project Description"></textarea>
+                <input type="url" id="project-link" placeholder="Project Link">
+                <button onclick="addProject()">Add Project</button>
+            </div>
+        </section>
+
         <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:nsakyi44@gmail.com">nsakyi44@gmail.com</a></p>
-            <p>Phone: +233-53-073-4651 | +233-55-913-3050</p>
-            <p>Address: SM 29 Kwashieman, Jah Love, Accra, Ghana</p>
+            <h2>Contact</h2>
+            <p>Email: prince.amankwah@example.com</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/prince-amankwah/" target="_blank">Prince Amankwah</a></p>
         </section>
     </div>
 
     <footer>
-        <p>Prince Amankwah &copy; 2024</p>
+        <p>&copy; 2024 Prince Amankwah. All rights reserved.</p>
     </footer>
+
+    <script>
+        function addProject() {
+            const title = document.getElementById('project-title').value;
+            const description = document.getElementById('project-description').value;
+            const link = document.getElementById('project-link').value;
+
+            if (title && description && link) {
+                const projectList = document.getElementById('project-list');
+
+                const projectDiv = document.createElement('div');
+                projectDiv.classList.add('project');
+
+                const projectTitle = document.createElement('h3');
+                projectTitle.textContent = title;
+
+                const projectDescription = document.createElement('p');
+                projectDescription.textContent = description;
+
+                const projectLink = document.createElement('a');
+                projectLink.href = link;
+                projectLink.target = '_blank';
+                projectLink.textContent = 'View Project';
+
+                projectDiv.appendChild(projectTitle);
+                projectDiv.appendChild(projectDescription);
+                projectDiv.appendChild(projectLink);
+
+                projectList.appendChild(projectDiv);
+
+                // Clear the input fields
+                document.getElementById('project-title').value = '';
+                document.getElementById('project-description').value = '';
+                document.getElementById('project-link').value = '';
+            } else {
+                alert('Please fill out all fields before adding a project.');
+            }
+        }
+    </script>
 </body>
 </html>
